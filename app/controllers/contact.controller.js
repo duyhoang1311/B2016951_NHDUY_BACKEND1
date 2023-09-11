@@ -1,3 +1,5 @@
+const ApiError = require("../api-error");
+
 exports.create = (req, res) => {
   res.send({ message: "create handler" });
 };
@@ -5,7 +7,11 @@ exports.findAll = (req, res) => {
   res.send({ message: "findAll handler" });
 };
 exports.findOne = (req, res) => {
-  res.send({ message: "findOne handler" });
+  try {
+    res.send({ message: "findOne handler" });
+  } catch (error) {
+    ApiError(error)
+  }
 };
 exports.update = (req, res) => {
   res.send({ message: "update handler" });
